@@ -20,10 +20,19 @@ public class RegisterController {
     @FXML
     Label registerLabel;
 
+    /**
+     *
+     * @param mess the message shown depending if the student was enrolled or not
+     */
     public void displayRegisterMessage(String mess) {
         registerLabel.setText(mess);
     }
 
+    /**
+     * when the return button is clicked, we return to the options window of the student
+     * @param event, the event is when the button is clicked
+     * @throws IOException
+     */
     public void backToStudentOp(ActionEvent event) throws IOException {
         root = FXMLLoader.load(getClass().getResource("StudentOptions.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();

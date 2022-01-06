@@ -35,6 +35,12 @@ public class TeacherController {
     @FXML
     Label textLabel;
 
+    /**
+     * if the first name, last name and ID of the teacher is valid, we go to the TeacherOptions scene
+     * @param event on click of the Login button
+     * @throws SQLException
+     * @throws IOException
+     */
     public void loginTeacher(ActionEvent event) throws SQLException, IOException {
         String firstN = firstNameTextField.getText();
         String lastN = lastNameTextField.getText();
@@ -74,6 +80,17 @@ public class TeacherController {
 
     }
 
+    /**
+     * is used in the loginTeacher method, when a login is successful
+     * to show each list of students enrolled to the courses of the teacher
+     * it is required to find first the course ID's, then the name of the courses, then the id of each student, then
+     * the name of each student, meanwhile the result variable is updatet at each step to include all the information
+     * result will represent the lable that is shown in the TeacherOptions scene
+     * @param loggedTeacher
+     * @param controller
+     * @return
+     * @throws SQLException
+     */
     public StringBuilder buildStudentLists(Teacher loggedTeacher, Controller controller) throws SQLException {
         StringBuilder result = new StringBuilder();
         for (long courseId : loggedTeacher.getCourses()) {

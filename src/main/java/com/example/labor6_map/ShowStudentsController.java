@@ -33,6 +33,12 @@ public class ShowStudentsController {
         studLabel.setText(String.valueOf(allStud));
     }
 
+    /**
+     *the refresh button makes shore that the list of students enrolled to the courses of the teacher is updated
+     * @param event
+     * @throws SQLException
+     * @throws IOException
+     */
     public void refresh(ActionEvent event) throws SQLException, IOException {
         TeacherMySQLRepository teachRep = new TeacherMySQLRepository("jdbc:mysql://localhost:3306/university", "root", "password1234");
         StudentMySQLRepository studentRep = new StudentMySQLRepository("jdbc:mysql://localhost:3306/university", "root", "password1234");
@@ -60,6 +66,12 @@ public class ShowStudentsController {
         }
        studLabel.setText(String.valueOf(result));
     }
+
+    /**
+     * when the return button is clicked, we return to the login window of the teacher
+     * @param event, the event is when the button is clicked
+     * @throws IOException
+     */
     public void backToTeacherLog(ActionEvent event) throws IOException {
         root = FXMLLoader.load(getClass().getResource("Login_Teacher.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();

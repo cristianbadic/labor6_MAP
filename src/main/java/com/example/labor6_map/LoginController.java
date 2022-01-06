@@ -14,6 +14,11 @@ public class LoginController {
     private Scene scene;
     private Parent root;
 
+    /**
+     * we go to the Login_teacher scene
+     * @param event is click of button teacher
+     * @throws IOException
+     */
     public void teacher(ActionEvent event) throws IOException {
         root = FXMLLoader.load(getClass().getResource("Login_Teacher.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -22,6 +27,11 @@ public class LoginController {
         stage.show();
     }
 
+    /**
+     * we go to the Login_Student scene
+     * @param event is click of button student
+     * @throws IOException
+     */
     public void student(ActionEvent event) throws IOException {
         root = FXMLLoader.load(getClass().getResource("Login_Student.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();

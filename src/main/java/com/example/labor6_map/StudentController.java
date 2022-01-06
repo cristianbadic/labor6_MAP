@@ -39,6 +39,12 @@ public class StudentController {
     @FXML
     TextField courseTextField;
 
+    /**
+     * if the first name, last name and ID of the student is valid, we go to the StudentOptions scene
+     * @param event on click of the Login button
+     * @throws SQLException
+     * @throws IOException
+     */
     public void loginStudent(ActionEvent event) throws SQLException, IOException {
         String firstN = firstNameTextField.getText();
         String lastN = lastNameTextField.getText();
@@ -64,13 +70,18 @@ public class StudentController {
         textLabel.setText("Invalid Login Data !");
     }
 
+    /**
+     *
+     * @param event on click on the show credits button, we go to the Credits scene, where the total number of credits is shown
+     * @throws SQLException
+     * @throws IOException
+     */
     public void showNrCredits(ActionEvent event) throws SQLException, IOException {
         TeacherMySQLRepository teachRep = new TeacherMySQLRepository("jdbc:mysql://localhost:3306/university", "root", "password1234");
         StudentMySQLRepository studentRep = new StudentMySQLRepository("jdbc:mysql://localhost:3306/university", "root", "password1234");
         CourseMySQLRepository courseRep = new CourseMySQLRepository("jdbc:mysql://localhost:3306/university", "root", "password1234");
 
         Controller controller = new Controller(courseRep, teachRep, studentRep);
-        //long id = Long.parseLong(idTextField.getText());
         for (Student student : controller.getAllStudents()) {
             if (student.getStudentId() == idStudent) {
                 totalCredits = student.getTotalCredits();
@@ -90,6 +101,12 @@ public class StudentController {
 
     }
 
+    /**
+     *we go to the Register scene, where the message "Register successful!" is shown if the registration was made
+     * else "Register unsuccessful!" is shown
+     * @param event click of register button
+     * @throws IOException
+     */
     public void registerStudent(ActionEvent event) throws IOException {
         String courseN = courseTextField.getText();
         TeacherMySQLRepository teachRep = new TeacherMySQLRepository("jdbc:mysql://localhost:3306/university", "root", "password1234");
