@@ -22,6 +22,7 @@ import java.sql.SQLException;
 
 public class TeacherController {
 
+    protected static Teacher loggedTeacher;
     private Stage stage;
     private Scene scene;
     private Parent root;
@@ -46,7 +47,7 @@ public class TeacherController {
 
         int found = 0;
 
-        Teacher loggedTeacher = controller.getAllTeachers().get(0);
+        loggedTeacher = controller.getAllTeachers().get(0);
         for (Teacher teacher : controller.getAllTeachers()) {
             if (teacher.getFirstName().equals(firstN) && teacher.getLastName().equals(lastN) && teacher.getTeacherId() == id) {
                 found = 1;
@@ -61,7 +62,7 @@ public class TeacherController {
             root = loader.load();
 
             ShowStudentsController showStudentsController = loader.getController();
-            showStudentsController.displayStudents(result);
+            showStudentsController.displayStudents(result, loggedTeacher);
 
             stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             scene = new Scene(root);
@@ -70,14 +71,6 @@ public class TeacherController {
         } else {
             textLabel.setText("Invalid Login Data !");
         }
-
-    }
-
-    public void refresh(ActionEvent event) throws SQLException, IOException {
-        TeacherMySQLRepository teachRep = new TeacherMySQLRepository("jdbc:mysql://localhost:3306/university", "root", "password1234");
-        StudentMySQLRepository studentRep = new StudentMySQLRepository("jdbc:mysql://localhost:3306/university", "root", "password1234");
-        CourseMySQLRepository courseRep = new CourseMySQLRepository("jdbc:mysql://localhost:3306/university", "root", "password1234");
-
 
     }
 

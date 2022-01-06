@@ -15,6 +15,12 @@ public class HelloApplication extends Application {
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+
+        Stage stage2 = new Stage();
+        Parent root2 = FXMLLoader.load(getClass().getResource("Login.fxml"));
+        Scene scene2 = new Scene(root2);
+        stage2.setScene(scene2);
+        stage2.show();
     }
 
     public static void main(String[] args) {
