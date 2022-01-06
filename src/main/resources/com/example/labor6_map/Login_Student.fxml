@@ -8,8 +8,8 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.labor6_map.StudentController">
    <children>
-      <Button layoutX="242.0" layoutY="309.0" mnemonicParsing="false" onAction="#loginStudent" prefHeight="35.0" prefWidth="79.0" text="Login" />
-      <Label fx:id="textLabel" layoutX="144.0" layoutY="56.0" prefHeight="35.0" prefWidth="311.0" text="Please enter name and ID !">
+      <Button layoutX="152.0" layoutY="307.0" mnemonicParsing="false" onAction="#loginStudent" prefHeight="35.0" prefWidth="79.0" text="Login" />
+      <Label fx:id="textLabel" layoutX="101.0" layoutY="52.0" prefHeight="35.0" prefWidth="380.0" text="Student please enter name and ID !">
          <font>
             <Font size="24.0" />
          </font>
@@ -40,5 +40,6 @@
             <Font size="14.0" />
          </font>
       </Label>
+      <Button layoutX="316.0" layoutY="307.0" mnemonicParsing="false" onAction="#backToLogin" prefHeight="35.0" prefWidth="79.0" text="Return" />
    </children>
 </AnchorPane>

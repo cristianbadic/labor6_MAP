@@ -6,7 +6,8 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.labor6_map.ShowStudentsController">
    <children>
-      <Label fx:id="studLabel" alignment="TOP_LEFT" layoutX="23.0" layoutY="17.0" prefHeight="340.0" prefWidth="414.0" text="Courses" />
+      <Label fx:id="studLabel" alignment="TOP_LEFT" layoutX="23.0" layoutY="17.0" prefHeight="294.0" prefWidth="414.0" text="Courses" />
       <Button layoutX="509.0" layoutY="315.0" mnemonicParsing="false" onAction="#refresh" text="Refresh" />
+      <Button layoutX="41.0" layoutY="315.0" mnemonicParsing="false" onAction="#backToTeacherLog" text="Return" />
    </children>
 </AnchorPane>

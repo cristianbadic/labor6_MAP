@@ -90,7 +90,7 @@ public class StudentController {
 
     }
 
-    public void registerStudent(ActionEvent event) throws SQLException, IOException, DoesNotExistException, CanNotRegister {
+    public void registerStudent(ActionEvent event) throws IOException {
         String courseN = courseTextField.getText();
         TeacherMySQLRepository teachRep = new TeacherMySQLRepository("jdbc:mysql://localhost:3306/university", "root", "password1234");
         StudentMySQLRepository studentRep = new StudentMySQLRepository("jdbc:mysql://localhost:3306/university", "root", "password1234");
@@ -103,24 +103,37 @@ public class StudentController {
         long courseID = -1;
         int len = 0;
         int len2 = 0;
-        for (Course course : controller.getAllCourses()){
-            if (course.getName().equals(courseN)){
-                len = course.getStudentsEnrolled().size();
-                courseID = course.getCourseId();
-                break;
+        try {
+            for (Course course : controller.getAllCourses()){
+                if (course.getName().equals(courseN)){
+                    len = course.getStudentsEnrolled().size();
+                    courseID = course.getCourseId();
+                    break;
+                }
             }
-        }
-
-        controller.register(courseID, idStudent);
-        for (Course course : controller.getAllCourses()){
-            if (course.getName().equals(courseN)){
-                len2 = course.getStudentsEnrolled().size();
-                //courseID = course.getCourseId();
-                break;
-            }
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
 
         String message;
+        try {
+            controller.register(courseID, idStudent);
+        } catch (DoesNotExistException | CanNotRegister | SQLException e) {
+            message = "Unsuccessful!";
+            //e.printStackTrace();
+        }
+        try {
+            for (Course course : controller.getAllCourses()){
+                if (course.getName().equals(courseN)){
+                    len2 = course.getStudentsEnrolled().size();
+                    //courseID = course.getCourseId();
+                    break;
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
         if ((len+1) == len2){
             message = "Register successful!";
         }
@@ -138,7 +151,20 @@ public class StudentController {
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+    }
 
+    public void backTo(ActionEvent event, String returnScene) throws IOException {
+        root = FXMLLoader.load(getClass().getResource(returnScene));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
 
+    public void backToLogin(ActionEvent event) throws IOException {
+        backTo(event, "Login.fxml");
+    }
+    public void backToOptions(ActionEvent event) throws IOException {
+        backTo(event, "Login_Student.fxml");
     }
 }

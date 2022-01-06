@@ -6,7 +6,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.labor6_map.StudentController">
    <children>
       <Label layoutX="219.0" layoutY="22.0" prefHeight="66.0" prefWidth="162.0" text="Options:" textAlignment="CENTER">
@@ -39,5 +38,6 @@
             <Font size="14.0" />
          </font>
       </Button>
+      <Button layoutX="234.0" layoutY="281.0" mnemonicParsing="false" onAction="#backToOptions" prefHeight="34.0" prefWidth="82.0" text="Return" />
    </children>
 </AnchorPane>
